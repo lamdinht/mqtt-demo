@@ -1,9 +1,11 @@
 /* 
- * Project myProject
- * Author: Your Name
- * Date: 
- * For comprehensive documentation and examples, please visit:
- * https://docs.particle.io/firmware/best-practices/firmware-template/
+ * Project mqtt-demo
+ * Author: Lam Dinh
+ * Date: 10/21/2023
+ * Description:
+ *    This demo tests out the functionalities of MQTT. 
+ *    LED status are uploaded to MQTT broker.
+ *    Local node-red subscribes to corresponding topics, and displays data on local dashboard.
  */
 
 // Include Particle Device OS APIs
@@ -47,6 +49,7 @@ const char* MQTTBrokerPassword = "villaNova";
 MQTT client(MQTTServer, 1883, callback);
 
 
+//    SETUP FUNCTION
 void setup() {
   Serial.begin(9600);
   Serial.println("Particle on.");
@@ -78,6 +81,8 @@ void setup() {
   }
 }
 
+
+//    LOOP FUNCTION
 void loop() {
   adcVal = analogRead(ADCpin) / 16;
   analogWrite(LED1, adcVal);
@@ -93,8 +98,7 @@ void loop() {
 
 
 
-//      GLOBAL FUNCTIONS
-
+//      OTHER GLOBAL FUNCTIONS
 // This function handles MQTT payloads
 void callback(char* topic, byte* payload, unsigned int length) {
     char p[length + 1];
