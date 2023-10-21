@@ -47,6 +47,14 @@ const char* MQTTClientName = "photon60";
 const char* MQTTBrokerUsername = "ece2431";
 const char* MQTTBrokerPassword = "villaNova";
 MQTT client(MQTTServer, 1883, callback);
+/*
+  MQTT main topic: photon60
+  LED0 subtopic: LED0status
+  LED1 subtopic: adcVal
+  
+  To listen to either topic, subscribe to photon60/[subtopic]
+*/
+
 
 
 //    SETUP FUNCTION
